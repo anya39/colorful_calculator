@@ -8,7 +8,7 @@ root.geometry("450x400")
 root.resizable(0,0) #disables resizing (width, height)
 root.configure(bg='#FFE6F0')
 
-#display and input field--------------------------------------------------------------------
+#creates display and input field--------------------------------------------------------------------
 display = tk.Entry (    #creates text input field
     root,
     font = ("Times New Roman", 35),
@@ -29,7 +29,7 @@ display.grid(
     ipady = 25,    #increases height of input field
 )
 
-#button functions--------------------------------------------------------------------
+#creates button functions--------------------------------------------------------------------
 def add_to_display(value):
     display.insert(tk.END, value) 
 
@@ -59,7 +59,7 @@ style.map(
     background = [("active", "#FBFFD8"),]
 )
 
-#buttons--------------------------------------------------------------------
+#creates buttons--------------------------------------------------------------------
 buttons = [
     ['7', '8', '9', '*'],
     ['4', '5', '6', '/'],
