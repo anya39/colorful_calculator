@@ -28,6 +28,23 @@ display.grid(
     ipady = 25,    #increases height of input field
 )
 
+#button functions----------------------------------------------------------------------
+def add_to_display(value):
+    display.insert(tk.END, value) 
+
+def clear_display():
+    display.delete(0, tk.END)
+
+def calculate():
+    try:
+        result = eval(display.get())
+        display.delete(0, tk.END)
+        display.insert(tk.END, str(result))
+    except:
+        display.delete(0, tk.END)
+        display.insert(tk.END, "error")
+
+
 #setup ttk style for buttons------------------
 style = ttk.Style()
 style.theme_use("clam") #theme to clam which allows for more customization
@@ -55,11 +72,18 @@ buttons = [
 
 for r, row in enumerate (buttons, start = 1): #makes buttons from list start at row 1
     for c, char in enumerate (row):
+        if char == 'C':
+            cmd = clear_display
+        elif char == '=':
+            cmd = calculate
+        else:
+            cmd = lambda ch=char: add_to_display(ch)
         button = ttk.Button(
             root,
             style = 'Calc.TButton',
             text = char,
             width = 4, #number of characters wide
+            command = cmd
         )
         button.grid(row=r, column=c, padx=5, pady=5)
 
